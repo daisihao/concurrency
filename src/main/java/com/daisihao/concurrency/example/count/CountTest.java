@@ -13,7 +13,7 @@ import java.util.concurrent.Semaphore;
  */
 @Slf4j
 @NotThreadSafe
-public class ConuntTest {
+public class CountTest {
 
     //总请求数
     public static int clientTotal = 5000;
