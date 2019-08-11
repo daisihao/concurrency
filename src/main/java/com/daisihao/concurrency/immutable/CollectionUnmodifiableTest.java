@@ -1,5 +1,6 @@
 package com.daisihao.concurrency.immutable;
 
+import com.daisihao.concurrency.annoations.ThreadSafe;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 
@@ -7,6 +8,7 @@ import java.util.Collections;
 import java.util.Map;
 
 @Slf4j
+@ThreadSafe
 public class CollectionUnmodifiableTest {
 
     private static final Integer a = 1;

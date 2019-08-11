@@ -13,7 +13,7 @@ import java.util.Map;
  */
 @Slf4j
 @NotThreadSafe
-public class ImmuatbleTest {
+public class ImmutableTest {
 
     private static final Integer a = 1;
     private static final String b = "2";
