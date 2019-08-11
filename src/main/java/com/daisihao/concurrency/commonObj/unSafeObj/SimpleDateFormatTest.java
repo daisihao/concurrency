@@ -3,6 +3,8 @@ package com.daisihao.concurrency.commonObj.unSafeObj;
 import com.daisihao.concurrency.annoations.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -10,22 +12,24 @@ import java.util.concurrent.Semaphore;
 
 @Slf4j
 @NotThreadSafe
-/**
- * 为什么要提供StringBuilder这个类呢？因为StringBuffer使用了synchronized关键字修饰，在多线程情况下效率比较低，
- * 如果在方法的局部变量中，因为有堆栈封闭，所以使用StringBuilder的效率要高一点
- */
-public class StringBuilderTest {
+public class SimpleDateFormatTest {
+
+    private static  SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
     //总请求数
     public static int clientTotal = 5000;
     //同时并发执行的线程数
     public static int threadTotal = 200;
-    //这里的成员变量必须new出来
-    public static StringBuilder stringBuilder = new StringBuilder();
 
     //
     private static void update() {
-        stringBuilder.append(1);
+        try {
+            sdf.parse("20190810");
+            log.info("转换后的数据为：{}",sdf.parse("20190810"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } finally {
+        }
     }
 
     public static void main(String[] args) throws Exception {
@@ -54,6 +58,7 @@ public class StringBuilderTest {
         countDownLatch.await();
         //关闭线程池
         executorService.shutdown();
-        log.info("StringBuilder的长度为：{}", stringBuilder.length());
     }
+
+
 }
