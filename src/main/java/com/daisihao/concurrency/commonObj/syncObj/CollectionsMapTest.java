@@ -1,12 +1,11 @@
-package com.daisihao.concurrency.commonObj.unSafeObj;
+package com.daisihao.concurrency.commonObj.syncObj;
 
 import com.daisihao.concurrency.annoations.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,14 +13,14 @@ import java.util.concurrent.Semaphore;
 
 @Slf4j
 @NotThreadSafe
-public class HashMapTest {
+public class CollectionsMapTest {
 
     //总请求数
     public static int clientTotal = 5000;
     //同时并发执行的线程数
     public static int threadTotal = 200;
     //这里的成员变量必须new出来
-    public static Map<Integer,Integer> map = new HashMap();
+    public static Map<Integer,Integer> map = Collections.synchronizedMap(new HashMap<>());
 
     //
     private static void update(int i) {
