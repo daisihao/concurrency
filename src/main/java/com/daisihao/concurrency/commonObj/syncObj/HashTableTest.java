@@ -10,6 +10,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
+/**
+ * HashTable是一个线程安全的类
+ */
 @Slf4j
 @ThreadSafe
 public class HashTableTest {
